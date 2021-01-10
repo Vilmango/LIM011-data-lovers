@@ -1,10 +1,12 @@
-/* eslint-disable import/extensions */
-/* eslint-disable max-len */
-// eslint-disable-next-line import/extensions
 import POKEMON from './data/pokemon/pokemon.js';
-// eslint-disable-next-line import/extensions
+
 import {
-  filtroTipoPokemon, filtroAlfabeticoAZ, filtroAlfabeticoZA, ordenNumerico, busquedaPokemonNombre, evolucionCaramelos,
+  filtroTipoPokemon,
+  filtroAlfabeticoAZ,
+  filtroAlfabeticoZA,
+  ordenNumerico,
+  busquedaPokemonNombre,
+  evolucionCaramelos,
 } from './data.js';
 
 const seleccionTipoPokemon = document.getElementById('pokemon-type');
@@ -116,15 +118,17 @@ const showFichaPokemonBusqueda = (data) => {
             </details>
         </div>`;
   });
-  // console.log(plantillaPokemon);
   return plantillaPokemon;
 };
+
 inputBusqueda.addEventListener('input', () => {
   if (inputBusqueda.value.toLowerCase() === '') {
     fichaPokemonBuscado.innerHTML = '';
     pageFiltro.style.display = 'none';
   } else {
-    fichaPokemonBuscado.innerHTML = (showFichaPokemonBusqueda(busquedaPokemonNombre(POKEMON, inputBusqueda.value.toLowerCase())));
+    fichaPokemonBuscado.innerHTML = (showFichaPokemonBusqueda(busquedaPokemonNombre(
+      POKEMON, inputBusqueda.value.toLowerCase(),
+    )));
     pageFiltro.style.display = 'block';
   }
   // return fichaPokemonBuscado;
@@ -134,7 +138,9 @@ seleccionTipoPokemon.addEventListener('click', () => {
     listaFiltroTipo.innerHTML = showFichaPokemon(POKEMON);
     // return listaFiltroTipo;
   } else {
-    listaFiltroTipo.innerHTML = showFichaPokemon(filtroTipoPokemon(POKEMON, seleccionTipoPokemon.value));
+    listaFiltroTipo.innerHTML = showFichaPokemon(
+      filtroTipoPokemon(POKEMON, seleccionTipoPokemon.value),
+    );
   } return listaFiltroTipo;
 });
 botonMostrarPantallaCaramelos.addEventListener('click', () => {
@@ -157,7 +163,9 @@ botonOrdenAZ.addEventListener('click', () => {
   if (seleccionTipoPokemon.value === 'Todos') {
     listaFiltroTipo.innerHTML = showFichaPokemon(filtroAlfabeticoAZ(POKEMON));
   } else {
-    listaFiltroTipo.innerHTML = showFichaPokemon(filtroAlfabeticoAZ(filtroTipoPokemon(POKEMON, seleccionTipoPokemon.value)));
+    listaFiltroTipo.innerHTML = showFichaPokemon(filtroAlfabeticoAZ(
+      filtroTipoPokemon(POKEMON, seleccionTipoPokemon.value),
+    ));
   }
 });
 const botonOrdenZA = document.getElementById('za');
@@ -165,7 +173,11 @@ botonOrdenZA.addEventListener('click', () => {
   if (seleccionTipoPokemon.value === 'Todos') {
     listaFiltroTipo.innerHTML = showFichaPokemon(filtroAlfabeticoZA(POKEMON));
   } else {
-    listaFiltroTipo.innerHTML = showFichaPokemon(filtroAlfabeticoZA(filtroTipoPokemon(POKEMON, seleccionTipoPokemon.value)));
+    listaFiltroTipo.innerHTML = showFichaPokemon(
+      filtroAlfabeticoZA(
+        filtroTipoPokemon(POKEMON, seleccionTipoPokemon.value),
+      ),
+    );
   }
 });
 const botonOrdenNumerico = document.getElementById('n');
@@ -173,22 +185,23 @@ botonOrdenNumerico.addEventListener('click', () => {
   if (seleccionTipoPokemon.value === 'Todos') {
     listaFiltroTipo.innerHTML = showFichaPokemon(ordenNumerico(POKEMON));
   } else {
-    listaFiltroTipo.innerHTML = showFichaPokemon(ordenNumerico(filtroTipoPokemon(POKEMON, seleccionTipoPokemon.value)));
+    listaFiltroTipo.innerHTML = showFichaPokemon(
+      ordenNumerico(
+        filtroTipoPokemon(POKEMON, seleccionTipoPokemon.value),
+      ),
+    );
   }
 });
 
-botonDescubrir.addEventListener('click', () => {
+botonDescubrir.addEventListener('click', (event) => {
   // eslint-disable-next-line no-restricted-globals
   event.preventDefault();
-  showEvolucionCaramelos(evolucionCaramelos(POKEMON, nameCandyPokemon.value, candyCountUsuario.value));
+  showEvolucionCaramelos(evolucionCaramelos(
+    POKEMON, nameCandyPokemon.value, candyCountUsuario.value,
+  ));
 });
 
 botonLimpiarCaramelos.addEventListener('click', () => {
   document.getElementById('caramelo-muestra-pokemon').innerHTML = '';
   document.getElementById('form').reset();
 });
-console.log(filtroAlfabeticoAZ(POKEMON).reverse());
-console.log(typeof filtroAlfabeticoAZ);
-=======
-});    
-
