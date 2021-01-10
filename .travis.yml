@@ -1,9 +1,4 @@
 language: node_js
-cache:
-  directories:
-    - ~/.npm
-git:
-  depth: 3
 deploy:
   provider: pages
   edge: true
